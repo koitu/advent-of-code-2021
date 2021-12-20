@@ -12,15 +12,15 @@ func countIncreases(filepath string, gap int) int {
 		return 0
 	}
 
-	reader, err := utils.LoadFile(filepath)
+	input, err := utils.LoadFile(filepath)
 	if err != nil {
 		panic(err)
 	}
 
 	// load all the values of input.txt into a slice as integers
 	nums := []int{}
-	for reader.Scan() {
-		n, err := strconv.Atoi(reader.Text())
+	for input.Scan() {
+		n, err := strconv.Atoi(input.Text())
 		if err != nil {
 			panic(err)
 		}

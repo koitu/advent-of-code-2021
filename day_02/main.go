@@ -37,15 +37,15 @@ func (pos *Position) updateWithAim(command string, units int) {
 
 // https://adventofcode.com/2021/day/2
 func getSubPosition(filepath string, withAim bool) int {
-	reader, err := utils.LoadFile(filepath)
+	input, err := utils.LoadFile(filepath)
 	if err != nil {
 		panic(err)
 	}
 
 	pos := Position{0, 0, 0}
 
-	for reader.Scan() {
-		s := strings.Fields(reader.Text())
+	for input.Scan() {
+		s := strings.Fields(input.Text())
 		command := s[0]
 		units, err := strconv.Atoi(s[1])
 		if err != nil {
