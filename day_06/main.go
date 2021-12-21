@@ -1,24 +1,15 @@
 package main
 
 import (
-	"strconv"
-	"strings"
-
 	"github.com/koitu/advent-of-code-2021/utils"
 )
 
 func lanternFish(filepath string, days int) uint64 {
-	input, err := utils.LoadFile(filepath)
-	if err != nil {
-		panic(err)
-	}
-	input.Scan()
-
-	fishes := strings.Split(input.Text(), ",")
+	fishes := utils.LoadList(filepath)
 	pops := [10]uint64{}
-	for _, fish := range fishes {
-		n, err := strconv.Atoi(fish)
-		if err != nil || n < 0 || n > 9 {
+
+	for _, n := range fishes {
+		if n < 0 || n > 9 {
 			panic("invalid input")
 		}
 		pops[n]++
