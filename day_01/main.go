@@ -6,7 +6,6 @@ import (
 	"github.com/koitu/advent-of-code-2021/utils"
 )
 
-// https://adventofcode.com/2021/day/1
 func countIncreases(filepath string, gap int) int {
 	if gap == 0 {
 		return 0

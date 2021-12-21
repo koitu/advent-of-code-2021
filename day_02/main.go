@@ -35,7 +35,6 @@ func (pos *Position) updateWithAim(command string, units int) {
 	}
 }
 
-// https://adventofcode.com/2021/day/2
 func getSubPosition(filepath string, withAim bool) int {
 	input, err := utils.LoadFile(filepath)
 	if err != nil {
