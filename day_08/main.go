@@ -141,22 +141,31 @@ func sevenSegmentMatches(filepath string, part2 bool) int {
 
 		if part2 {
 			top := firstDiff(found[1], found[7])
-			// 3 must contain segments that make up 1 (unlike 2 and 5)
+			// 3 contains all segments that make up 1 (unlike 2 and 5)
 			found[3] = firstStr(len5, found[1], true)
 			len5 = removeFromSlice(len5, found[3])
-			// 6 must not contain segments that make up 1 (unlike 0 and 9)
+			// 6 does not contain some segments that make up 1 (unlike 0 and 9)
 			found[6] = firstStr(len6, found[1], false)
 			len6 = removeFromSlice(len6, found[6])
 
+			//        top
+			//       +---+
+			//  ltop |   | rtop
+			//       +---+ <---- mid
+			//  lbot |   | rbot
+			//       +---+
+			//        bot
 			rtop := firstDiff(found[6], found[1])
 			rbot := firstDiff(string(rtop), found[1])
 			bot := firstDiff(found[4]+found[7], found[3])
 			mid := firstDiff(string([]rune{top, rtop, rbot, bot}), found[3])
 
+			// 0 does not have a mid seg (and 9 does)
 			found[9] = firstStr(len6, string(mid), true)
 			len6 = removeFromSlice(len6, found[9])
 			found[0] = len6[0]
 
+			// 5 does not have a rtop seg (and 2 does)
 			found[2] = firstStr(len5, string(rtop), true)
 			len5 = removeFromSlice(len5, found[2])
 			found[5] = len5[0]
