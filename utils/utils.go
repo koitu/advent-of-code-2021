@@ -36,3 +36,6 @@ func LoadList(filename string) []int {
 
 	return result
 }
+
+// func to convert string to int
+// and panic if err
