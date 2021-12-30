@@ -103,15 +103,17 @@ func foldPaper(filepath string, part2 bool) int {
 	}
 
 	count := 0
-	for _, col := range visable {
-		for _, vis := range col {
-			if vis {
-				count++
+	if !part2 {
+		// count the visable parts
+		for _, col := range visable {
+			for _, vis := range col {
+				if vis {
+					count++
+				}
 			}
 		}
-	}
-
-	if part2 {
+	} else {
+		// print the visable parts
 		for i := 0; i < maxy; i++ {
 			for j := 0; j < maxx; j++ {
 				if visable[j][i] {
