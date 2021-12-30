@@ -1,7 +1,6 @@
 package main
 
 import (
-	"strconv"
 	"strings"
 
 	"github.com/koitu/advent-of-code-2021/utils"
@@ -46,10 +45,8 @@ func getSubPosition(filepath string, withAim bool) int {
 	for input.Scan() {
 		s := strings.Fields(input.Text())
 		command := s[0]
-		units, err := strconv.Atoi(s[1])
-		if err != nil {
-			panic(err)
-		}
+		units := utils.Atoi(s[1])
+
 		if !withAim {
 			pos.update(command, units)
 		} else {

@@ -1,7 +1,6 @@
 package main
 
 import (
-	"strconv"
 	"strings"
 
 	"github.com/koitu/advent-of-code-2021/utils"
@@ -50,11 +49,7 @@ func countOverlaps(filepath string, part2 bool) int {
 		for _, linePart := range fullLine {
 			vals := strings.Split(linePart, ",")
 			for _, val := range vals {
-				num, err := strconv.Atoi(val)
-				if err != nil {
-					panic(err)
-				}
-				newNums = append(newNums, num)
+				newNums = append(newNums, utils.Atoi(val))
 			}
 		}
 

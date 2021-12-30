@@ -1,7 +1,6 @@
 package main
 
 import (
-	"strconv"
 	"strings"
 
 	"github.com/koitu/advent-of-code-2021/utils"
@@ -74,11 +73,7 @@ func bingoSubsystem(filepath string, part2 bool) int {
 	var nums []int
 
 	for _, draw := range draws {
-		num, err := strconv.Atoi(draw)
-		if err != nil {
-			panic(err)
-		}
-		nums = append(nums, num)
+		nums = append(nums, utils.Atoi(draw))
 	}
 
 	var boards []*Board
@@ -89,12 +84,7 @@ func bingoSubsystem(filepath string, part2 bool) int {
 			if input.Scan() {
 				line := strings.Fields(input.Text())
 				for pos, val := range line {
-					num, err := strconv.Atoi(val)
-					if err != nil {
-						panic(err)
-					}
-					newBoard.board[i][pos] = num
-
+					newBoard.board[i][pos] = utils.Atoi(val)
 				}
 			}
 		}

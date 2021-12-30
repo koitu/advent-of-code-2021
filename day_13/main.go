@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"strconv"
 	"strings"
 
 	"github.com/koitu/advent-of-code-2021/utils"
@@ -35,25 +34,13 @@ func foldPaper(filepath string, part2 bool) int {
 		}
 
 		line := strings.Split(in, ",")
-		x, err := strconv.Atoi(line[0])
-		if err != nil {
-			panic(err)
-		}
-		y, err := strconv.Atoi(line[1])
-		if err != nil {
-			panic(err)
-		}
-
-		points = append(points, coordinate{x: x, y: y})
+		points = append(points, coordinate{x: utils.Atoi(line[0]), y: utils.Atoi(line[1])})
 	}
 
 	// process the instructions
 	for input.Scan() {
 		instruct := strings.Split(input.Text(), "=")
-		fold, err := strconv.Atoi(instruct[1])
-		if err != nil {
-			panic(err)
-		}
+		fold := utils.Atoi(instruct[1])
 
 		if instruct[0] == "fold along y" {
 			for i, coor := range points {
@@ -117,9 +104,9 @@ func foldPaper(filepath string, part2 bool) int {
 		for i := 0; i < maxy; i++ {
 			for j := 0; j < maxx; j++ {
 				if visable[j][i] {
-					fmt.Printf("#")
+					fmt.Printf("# ")
 				} else {
-					fmt.Printf(".")
+					fmt.Printf(". ")
 				}
 			}
 			fmt.Printf("\n")

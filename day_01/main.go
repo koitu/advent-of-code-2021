@@ -1,8 +1,6 @@
 package main
 
 import (
-	"strconv"
-
 	"github.com/koitu/advent-of-code-2021/utils"
 )
 
@@ -19,11 +17,7 @@ func countIncreases(filepath string, gap int) int {
 	// load all the values of input.txt into a slice as integers
 	nums := []int{}
 	for input.Scan() {
-		n, err := strconv.Atoi(input.Text())
-		if err != nil {
-			panic(err)
-		}
-		nums = append(nums, n)
+		nums = append(nums, utils.Atoi(input.Text()))
 	}
 
 	count := 0

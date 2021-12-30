@@ -2,7 +2,6 @@ package main
 
 import (
 	"sort"
-	"strconv"
 	"strings"
 
 	"github.com/koitu/advent-of-code-2021/utils"
@@ -81,11 +80,7 @@ func sumOfLowPoints(filepath string, part2 bool) int {
 		newNums := []int{}
 		line := strings.Split(input.Text(), "")
 		for _, val := range line {
-			num, err := strconv.Atoi(val)
-			if err != nil {
-				panic(err)
-			}
-			newNums = append(newNums, num)
+			newNums = append(newNums, utils.Atoi(val))
 		}
 		nums = append(nums, newNums)
 		visit = append(visit, make([]bool, len(newNums)))
