@@ -37,9 +37,9 @@ func (a coordinate) minus(b coordinate) coordinate {
 func (s *scanner) checkMatch(check *scanner) bool {
 	absBeacons := s.abs
 
-	// pretend the check scanner is at (0,0,0)
-	// if there are 12 pairs of beacons are offset in the same way then we have our match
-	// (and this offset was how the check scanner was moved to (0,0,0))
+	// move the check scanner to (0,0,0)
+	// if there are 12 pairs of beacons offset in the same way then we have our match
+	// (this offset is also how the check scanner was moved to (0,0,0))
 	for _, t := range transforms {
 		offsets := map[coordinate]int{}
 		relBeacons := transform(check.rel, t)
